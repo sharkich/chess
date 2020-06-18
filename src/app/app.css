@@ -1,3 +1,31 @@
 html {
-    background: grey;
+    background: #ccc;
+}
+
+.board {
+    border: 1px solid #000;
+    margin: 1em;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    width: 800px;
+    height: 800px;
+}
+
+.row {
+    display: flex;
+    flex: 1;
+}
+
+.cell {
+    flex: 1;
+}
+
+.cell.black {
+    background: #000;
+}
+
+.cell.white {
+    background: #fff;
 }

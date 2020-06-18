@@ -1,11 +1,11 @@
 import './css.js';
-import initBoard from './board';
+import getBoard from './board';
 
 const CELLS_X = 8;
 const CELLS_Y = 8;
 
 const app = (root) => {
-  const board = initBoard(CELLS_X, CELLS_Y);
+  const board = getBoard(CELLS_X, CELLS_Y);
   root.appendChild(board.element);
 };
 
