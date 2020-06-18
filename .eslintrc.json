@@ -1,0 +1,38 @@
+{
+    "env": {
+        "browser": true,
+        "es6": true
+    },
+    "extends": [
+        "plugin:@typescript-eslint/eslint-recommended"
+    ],
+    "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly"
+    },
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": 2018,
+        "sourceType": "module"
+    },
+    "plugins": [
+        "@typescript-eslint",
+        "import",
+        "sort-imports-es6-autofix"
+    ],
+    "rules": {
+        "arrow-body-style": ["error", "as-needed"],
+        "no-shadow": ["error", { "builtinGlobals": false, "hoist": "functions", "allow": [] }],
+        "import/order": ["error", {"newlines-between": "never"}]
+    },
+    "settings": {
+        "propWrapperFunctions": [],
+        "linkComponents": [
+            "Hyperlink",
+            {"name": "Link", "linkAttribute": "to"}
+        ]
+    }
+}
