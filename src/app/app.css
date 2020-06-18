@@ -1,5 +1,6 @@
 html {
     background: #ccc;
+    font-family: Arial;
 }
 
 .board {
@@ -20,6 +21,11 @@ html {
 
 .cell {
     flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    position: relative;
 }
 
 .cell.black {
@@ -28,4 +34,16 @@ html {
 
 .cell.white {
     background: #fff;
+}
+
+.coordinate {
+    position: absolute;
+}
+
+.coordinate-x {
+    bottom: 4px;
+}
+
+.coordinate-y {
+    left: 4px;
 }

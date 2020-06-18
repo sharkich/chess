@@ -28,10 +28,10 @@ const getRow = (row, root, x, rowIndex) => {
 const getBoard = (x, y) => {
   const element = document.createElement('div');
   element.classList.add('board');
-  const board = new Array(y).fill(ROW).map((row, index) => getRow(row, element, x, index));
+  const rows = new Array(y).fill(ROW).map((row, index) => getRow(row, element, x, index));
   return {
     element,
-    board,
+    rows,
   };
 };
 
