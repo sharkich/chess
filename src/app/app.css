@@ -47,3 +47,22 @@ html {
 .coordinate-y {
     left: 4px;
 }
+
+.box {
+    display: inline-block;
+    border: 1px solid #000;
+    margin: 1em;
+    padding: 1em;
+}
+
+.box-line {
+    border: 1px solid #999;
+    margin: 4px;
+    padding: 4px;
+    display: flex;
+}
+
+.piece {
+    font-size: 50pt;
+    margin: 4px 20px;
+}
