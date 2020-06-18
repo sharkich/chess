@@ -1,5 +1,9 @@
 import app from './app';
 
-console.log('init');
+const root = document.getElementById('root');
 
-app();
+if (!root) {
+  throw new Error('The root element is undefined');
+}
+
+app(root);
