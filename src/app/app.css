@@ -66,3 +66,24 @@ html {
     font-size: 50pt;
     margin: 4px 20px;
 }
+
+.box .piece:hover {
+    cursor: move;
+    color: coral;
+}
+
+.white-white {
+    color: #000;
+}
+
+.white-black {
+    color: #000;
+}
+
+.black-white {
+    color: #fff;
+}
+
+.black-black {
+    color: #fff;
+}

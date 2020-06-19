@@ -1,10 +1,17 @@
 import PIECES from '../game/pieces';
 
-const getPiece = (root, piece) => {
+const getPiece = (root, piece, color) => {
   const element = document.createElement('div');
   element.classList.add('piece');
   element.innerText = piece.symbol;
   root.appendChild(element);
+
+  element.setAttribute('draggable', 'true');
+  element.ondragstart = (event) => {
+    event.dataTransfer.setData('type', piece.type);
+    event.dataTransfer.setData('symbol', piece.symbol);
+    event.dataTransfer.setData('color', color);
+  };
 
   return {
     element,
@@ -20,7 +27,7 @@ const getBoxLine = (root, color) => {
   if (!PIECES[color]) {
     throw new Error('Unpredictable color');
   }
-  const pieces = PIECES[color].forEach((piece) => getPiece(element, piece));
+  const pieces = PIECES[color].forEach((piece) => getPiece(element, piece, color));
 
   return {
     element,
