@@ -10,8 +10,8 @@ html {
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
-    width: 800px;
-    height: 800px;
+    width: 600px;
+    height: 600px;
 }
 
 .row {
@@ -63,7 +63,12 @@ html {
 }
 
 .piece {
-    font-size: 50pt;
+    font-size: 40pt;
+    width: 88%;
+    text-align: center;
+}
+
+.box .piece {
     margin: 4px 20px;
 }
 
@@ -86,4 +91,13 @@ html {
 
 .black-black {
     color: #fff;
+}
+
+.board .piece:hover {
+    cursor: pointer;
+    color: yellowgreen;
+}
+
+.board .piece.selected {
+    border: 1px solid yellowgreen;
 }
