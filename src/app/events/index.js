@@ -1,24 +1,25 @@
 import isCellsAvailableForMove from '../store/moves';
 
-const initEvents = (root, store, setStore, render) => {
+const initEvents = (root, store, render) => {
   // Cell Click
   root.querySelectorAll('.cell').forEach((element) =>
     element.addEventListener('click', () => {
       const { row, col } = element.dataset;
-      const piece = store.board[row][col].piece;
+      const data = store.getStore();
+      const piece = data.board[row][col].piece;
       if (!piece) {
-        if (isCellsAvailableForMove(store, row, col)) {
+        if (isCellsAvailableForMove(data, row, col)) {
           // Move
-          store.board[store.selected.row][store.selected.col].piece = null;
-          store.board[row][col].piece = store.selected.piece;
-          store.selected = null;
-          setStore(store);
+          data.board[data.selected.row][data.selected.col].piece = null;
+          data.board[row][col].piece = data.selected.piece;
+          data.selected = null;
+          store.setStore(data);
         }
         render();
         return;
       }
       // Select Piece
-      setStore({
+      store.setStore({
         selected: {
           row: +row,
           col: +col,
@@ -53,11 +54,21 @@ const initEvents = (root, store, setStore, render) => {
         color: event.dataTransfer.getData('color'),
         selected: false,
       };
-      store.board[row][col].piece = piece;
-      setStore(store);
+      const data = store.getStore();
+      data.board[row][col].piece = piece;
+      store.setStore(data);
       render();
     })
   );
+
+  // Back
+  const back = document.getElementById('back');
+  if (back) {
+    back.addEventListener('click', () => {
+      store.back();
+      render();
+    });
+  }
 };
 
 export default initEvents;

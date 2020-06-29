@@ -1,7 +1,7 @@
 import './css.js';
 import Store from './store';
 import initEvents from './events';
-import { renderBoard, renderBox } from './render';
+import { renderBack, renderBoard, renderBox } from './render';
 
 const app = (root) => {
   const store = new Store();
@@ -9,8 +9,8 @@ const app = (root) => {
 
   const render = () => {
     console.log('render');
-    root.innerHTML = `${renderBoard(store.getStore())}${renderBox()}`;
-    initEvents(root, store.getStore(), store.setStore.bind(store), render);
+    root.innerHTML = `${renderBoard(store.getStore())}${renderBox()}${renderBack()}`;
+    initEvents(root, store, render);
   };
 
   render();

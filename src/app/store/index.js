@@ -27,7 +27,8 @@ const initStore = () => {
 
 class Store {
   constructor() {
-    this.data = initStore();
+    this.history = [];
+    this.setStore(initStore());
   }
 
   getStore() {
@@ -35,8 +36,14 @@ class Store {
   }
 
   setStore(store) {
-    console.log('setStore', store);
     this.data = { ...this.data, ...store };
+    this.history.push(JSON.stringify(this.data));
+  }
+
+  back() {
+    const version = this.history.pop();
+    console.log('back', this.data);
+    this.data = version ? JSON.parse(version) : initStore();
   }
 }
 

@@ -53,3 +53,7 @@ export const renderBox = () => `
         </div>
     </div>
   `;
+
+export const renderBack = () => `
+  <div class="back"><button id="back">Back</button></div>
+`;
