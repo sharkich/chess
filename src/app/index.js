@@ -1,19 +1,16 @@
 import './css.js';
-import getBoard from './board';
+import initStore from './store';
 import initEvents from './events';
 import { renderBoard, renderBox } from './render';
 
-const CELLS_X = 8;
-const CELLS_Y = 8;
-
 const app = (root) => {
-  const board = getBoard(CELLS_X, CELLS_Y);
-  console.log('board', board);
+  const store = initStore();
+  console.log('store', store);
 
   const render = () => {
     console.log('render');
-    root.innerHTML = `${renderBoard(board)}${renderBox()}`;
-    initEvents(root, board, render);
+    root.innerHTML = `${renderBoard(store)}${renderBox()}`;
+    initEvents(root, store, render);
   };
 
   render();

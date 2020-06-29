@@ -1,13 +1,13 @@
-const initEvents = (root, board, render) => {
+const initEvents = (root, store, render) => {
   // Cell Click
   root.querySelectorAll('.cell').forEach((element) =>
     element.addEventListener('click', () => {
       const { row, col } = element.dataset;
-      const piece = board.rows[row].cells[col].piece;
+      const piece = store.board[row][col].piece;
       if (!piece) {
         return;
       }
-      piece.selected = !piece.selected;
+      store.selected = [+row, +col];
       render();
     })
   );
@@ -36,7 +36,7 @@ const initEvents = (root, board, render) => {
         color: event.dataTransfer.getData('color'),
         selected: false,
       };
-      board.rows[row].cells[col].piece = piece;
+      store.board[row][col].piece = piece;
       render();
     })
   );

@@ -1,28 +1,29 @@
 import PIECES from '../game/pieces';
+import { isEqualArray } from '../utils/array.js';
 
-const renderPiece = (piece) => `
-  <div class="piece ${piece.selected ? 'selected' : ''}">
+const renderPiece = (piece, selected) => `
+  <div class="piece ${selected ? 'selected' : ''}">
     ${piece.symbol}
   </div>
 `;
 
-const renderCell = (cell, rowIndex, cellIndex) => `
+const renderCell = (cell, rowIndex, cellIndex, selected) => `
   <div class="cell ${cell.color}" data-row="${rowIndex}" data-col="${cellIndex}">
-    ${cell.piece ? renderPiece(cell.piece) : ''}
+    ${cell.piece ? renderPiece(cell.piece, isEqualArray(selected, [rowIndex, cellIndex])) : ''}
     ${rowIndex === 0 ? `<div class="coordinate coordinate-x">${String.fromCharCode(65 + cellIndex)}</div>` : ''}
     ${cellIndex === 0 ? `<div class="coordinate coordinate-y">${rowIndex + 1}</div>` : ''}
   </div>
 `;
 
-const renderRow = (row, rowIndex) => `
+const renderRow = (row, rowIndex, selected) => `
   <div class="row">
-    ${row.cells.map((cell, index) => renderCell(cell, rowIndex, index)).join('')}
+    ${row.map((cell, index) => renderCell(cell, rowIndex, index, selected)).join('')}
   </div>
 `;
 
-export const renderBoard = (board) => `
+export const renderBoard = (store) => `
     <div class="board">
-        ${board.rows.map((row, index) => renderRow(row, index)).join('')}
+        ${store.board.map((row, index) => renderRow(row, index, store.selected)).join('')}
     </div>
   `;
 
