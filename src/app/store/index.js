@@ -25,4 +25,19 @@ const initStore = () => {
   };
 };
 
-export default initStore;
+class Store {
+  constructor() {
+    this.data = initStore();
+  }
+
+  getStore() {
+    return JSON.parse(JSON.stringify(this.data));
+  }
+
+  setStore(store) {
+    console.log('setStore', store);
+    this.data = { ...this.data, ...store };
+  }
+}
+
+export default Store;

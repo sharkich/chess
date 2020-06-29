@@ -1,16 +1,16 @@
 import './css.js';
-import initStore from './store';
+import Store from './store';
 import initEvents from './events';
 import { renderBoard, renderBox } from './render';
 
 const app = (root) => {
-  const store = initStore();
+  const store = new Store();
   console.log('store', store);
 
   const render = () => {
     console.log('render');
-    root.innerHTML = `${renderBoard(store)}${renderBox()}`;
-    initEvents(root, store, render);
+    root.innerHTML = `${renderBoard(store.getStore())}${renderBox()}`;
+    initEvents(root, store.getStore(), store.setStore.bind(store), render);
   };
 
   render();

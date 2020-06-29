@@ -1,6 +1,6 @@
 import isCellsAvailableForMove from '../store/moves';
 
-const initEvents = (root, store, render) => {
+const initEvents = (root, store, setStore, render) => {
   // Cell Click
   root.querySelectorAll('.cell').forEach((element) =>
     element.addEventListener('click', () => {
@@ -12,17 +12,19 @@ const initEvents = (root, store, render) => {
           store.board[store.selected.row][store.selected.col].piece = null;
           store.board[row][col].piece = store.selected.piece;
           store.selected = null;
+          setStore(store);
         }
         render();
         return;
       }
       // Select Piece
-      store.selected = {
-        row: +row,
-        col: +col,
-        piece,
-      };
-      console.log(store);
+      setStore({
+        selected: {
+          row: +row,
+          col: +col,
+          piece,
+        },
+      });
       render();
     })
   );
@@ -52,6 +54,7 @@ const initEvents = (root, store, render) => {
         selected: false,
       };
       store.board[row][col].piece = piece;
+      setStore(store);
       render();
     })
   );
