@@ -101,3 +101,10 @@ html {
 .board .piece.selected {
     border: 1px solid yellowgreen;
 }
+
+.for-move {
+    width: 16px;
+    height: 16px;
+    background: #ccc;
+    border-radius: 50%;
+}

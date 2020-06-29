@@ -7,7 +7,12 @@ const initEvents = (root, store, render) => {
       if (!piece) {
         return;
       }
-      store.selected = [+row, +col];
+      store.selected = {
+        row: +row,
+        col: +col,
+        piece,
+      };
+      console.log(store);
       render();
     })
   );
