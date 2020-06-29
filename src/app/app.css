@@ -102,6 +102,10 @@ html {
     border: 1px solid yellowgreen;
 }
 
+.cell-for-move {
+    cursor: pointer;
+}
+
 .for-move {
     width: 16px;
     height: 16px;

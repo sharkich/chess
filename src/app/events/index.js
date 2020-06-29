@@ -1,3 +1,5 @@
+import isCellsAvailableForMove from '../store/moves';
+
 const initEvents = (root, store, render) => {
   // Cell Click
   root.querySelectorAll('.cell').forEach((element) =>
@@ -5,8 +7,16 @@ const initEvents = (root, store, render) => {
       const { row, col } = element.dataset;
       const piece = store.board[row][col].piece;
       if (!piece) {
+        if (isCellsAvailableForMove(store, row, col)) {
+          // Move
+          store.board[store.selected.row][store.selected.col].piece = null;
+          store.board[row][col].piece = store.selected.piece;
+          store.selected = null;
+        }
+        render();
         return;
       }
+      // Select Piece
       store.selected = {
         row: +row,
         col: +col,

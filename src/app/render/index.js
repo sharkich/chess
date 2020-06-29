@@ -11,7 +11,7 @@ const renderPiece = (piece, selected) => `
 const renderCell = (cell, rowIndex, colIndex, store) => {
   const isCellForMove = isCellsAvailableForMove(store, rowIndex, colIndex);
   return `
-  <div class="cell ${cell.color}" data-row="${rowIndex}" data-col="${colIndex}">
+  <div class="cell ${cell.color} ${isCellForMove ? 'cell-for-move' : ''}" data-row="${rowIndex}" data-col="${colIndex}">
     ${
       cell.piece
         ? renderPiece(cell.piece, store.selected && store.selected.row === rowIndex && store.selected.col === colIndex)
