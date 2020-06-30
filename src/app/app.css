@@ -14,10 +14,37 @@ html {
 }
 
 .cell {
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
 }
 
 .black {
     background: #000;
+}
+
+.box {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #000;
+}
+
+.box-pieces {
+    display: flex;
+    font-size: 40px;
+}
+
+.box-white {
+    color: #fff;
+}
+
+.box-black {
+    color: #000;
+}
+
+.piece {
+    margin: 4px 10px;
 }
