@@ -1,13 +1,18 @@
 const CELL_COUNT = 8;
 
-const renderBoard = () => {
-  const cells = new Array(CELL_COUNT)
+const renderCells = (rowIndex) =>
+  new Array(CELL_COUNT)
     .fill(null)
-    .map(() => `<div class="cell"></div>`)
+    .map((_, indexCol) => {
+      const isBlack = rowIndex % 2 ^ indexCol % 2;
+      return `<div class="cell ${isBlack ? 'black' : 'white'}">${rowIndex}</div>`;
+    })
     .join('');
+
+const renderBoard = () => {
   const rows = new Array(CELL_COUNT)
     .fill(null)
-    .map(() => `<div class="row">${cells}</div>`)
+    .map((_, index) => `<div class="row">${renderCells(index)}</div>`)
     .join('');
   return `
   <div class="board">
