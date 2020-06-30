@@ -1,12 +1,15 @@
 import renderBoard from './render/board.js';
 import renderBox from './render/box.js';
-console.log('app');
+import STORE from './store';
 
 const app = (root) => {
-  root.innerHTML = `
-    ${renderBoard()}
-    ${renderBox()}
-  `;
+  const render = (store) => {
+    root.innerHTML = `
+      ${renderBoard(store.board)}
+      ${renderBox(store.box)}
+    `;
+  };
+  render(STORE);
 };
 
 export default app;
