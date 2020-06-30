@@ -1,6 +1,5 @@
 import isCellsAvailableForMove from '../store/moves';
 import BOX_PIECES from '../store/pieces.js';
-import { isEqualArray } from '../utils/array.js';
 
 const renderPiece = (piece, selected) => `
   <div class="piece ${selected ? 'selected' : ''}">
