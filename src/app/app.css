@@ -32,6 +32,26 @@ html {
     background: #fff;
 }
 
+.board__cell_movable {
+    position: relative;
+}
+
+.board__cell_movable:after {
+    content: '';
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    width: 20px;
+    height: 20px;
+    border: 1px solid #666;
+    border-radius: 50%;
+}
+
+.board .piece-black,
+.board .piece-white {
+    cursor: pointer;
+}
+
 .box {
     margin: 10px;
     padding: 10px;
