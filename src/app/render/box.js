@@ -1,9 +1,9 @@
-const renderPieces = (pieces) => pieces.map((piece) => `<div class="piece">${piece.symbol}</div>`).join('');
+const renderPieces = (pieces) => pieces.map((piece) => `<div class="box__piece">${piece.symbol}</div>`).join('');
 
 const renderBox = (box) => `
     <div class="box">
-      <div class="box-pieces box-white">${renderPieces(box.white)}</div>
-      <div class="box-pieces box-black">${renderPieces(box.black)}</div>
+      <div class="box__pieces box__pieces_white">${renderPieces(box.white)}</div>
+      <div class="box__pieces box__pieces_black">${renderPieces(box.black)}</div>
     </div>
   `;
 

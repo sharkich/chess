@@ -10,11 +10,11 @@ html {
     display: inline-block;
 }
 
-.row {
+.board__row {
     display: flex;
 }
 
-.cell {
+.board__cell {
     width: 50px;
     height: 50px;
     display: flex;
@@ -23,11 +23,11 @@ html {
     color: #666;
 }
 
-.black {
+.board__cell_black {
     background: #000;
 }
 
-.white {
+.board__cell_white {
     background: #fff;
 }
 
@@ -38,19 +38,19 @@ html {
     display: inline-block;
 }
 
-.box-pieces {
+.box__pieces {
     display: flex;
     font-size: 40px;
 }
 
-.box-white {
+.box__pieces_white {
     color: #fff;
 }
 
-.box-black {
+.box__pieces_black {
     color: #000;
 }
 
-.piece {
+.box__piece {
     margin: 4px 10px;
 }
