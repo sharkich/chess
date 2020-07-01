@@ -25,4 +25,11 @@ const PIECES = {
   },
 };
 
+const getColoredPiece = (piece, color) => ({ ...piece, color });
+
+export const BOX_PIECES = [
+  ...Object.keys(PIECES).map((key) => getColoredPiece(PIECES[key], 'black')),
+  ...Object.keys(PIECES).map((key) => getColoredPiece(PIECES[key], 'white')),
+];
+
 export default PIECES;
