@@ -1,3 +1,4 @@
+import initEvents from './events';
 import renderBoard from './render/board.js';
 import renderBox from './render/box.js';
 import STORE from './store';
@@ -8,6 +9,7 @@ const app = (root) => {
       ${renderBoard(store.board)}
       ${renderBox(store.box)}
     `;
+    initEvents(root);
   };
   render(STORE);
 };

@@ -1,4 +1,5 @@
-const renderPieces = (pieces) => pieces.map((piece) => `<div class="box__piece">${piece.symbol}</div>`).join('');
+const renderPieces = (pieces) =>
+  pieces.map((piece) => `<div class="box__piece" draggable="true">${piece.symbol}</div>`).join('');
 
 const renderBox = (box) => `
     <div class="box">
