@@ -1,4 +1,5 @@
 import { BOX_PIECES } from '../model/pieces.js';
+import pieceMove from '../services/piece-move.js';
 
 const boardEvents = (root, store, render) => {
   root.querySelectorAll('.board__cell').forEach((element) => {
@@ -18,12 +19,12 @@ const boardEvents = (root, store, render) => {
       render(store);
     });
 
-    element.addEventListener('click', (event) => {
+    element.addEventListener('click', () => {
       const piece = store.board[+row][+col].piece;
       if (!piece) {
         return;
       }
-      store.board.forEach((_row) => _row.forEach((cell) => (cell.move = true)));
+      store.board = pieceMove(+row, +col, store.board);
       render(store);
     });
   });
