@@ -52,6 +52,22 @@ html {
     color: #000;
 }
 
+.board__cell_black.piece-black {
+    color: green;
+}
+
+.board__cell_black.piece-white {
+    color: white;
+}
+
+.board__cell_white.piece-black {
+    color: black;
+}
+
+.board__cell_white.piece-white {
+    color: saddlebrown;
+}
+
 .box__piece {
     margin: 4px 10px;
 }

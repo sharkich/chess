@@ -2,8 +2,8 @@ const renderCells = (row, rowIndex) =>
   row
     .map((piece, colIndex) => {
       const isBlack = rowIndex % 2 ^ colIndex % 2;
-      return `<div class="board__cell ${
-        isBlack ? 'board__cell_black' : 'board__cell_white'
+      return `<div class="board__cell ${isBlack ? 'board__cell_black' : 'board__cell_white'} ${
+        piece ? (piece.color === 'black' ? 'piece-black' : 'piece-white') : ''
       }" data-row="${rowIndex}" data-col="${colIndex}">${piece ? piece.symbol : ''}</div>`;
     })
     .join('');
