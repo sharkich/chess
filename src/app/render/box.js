@@ -1,5 +1,7 @@
 const renderPieces = (pieces) =>
-  pieces.map((piece) => `<div class="box__piece" draggable="true">${piece.symbol}</div>`).join('');
+  pieces
+    .map((piece) => `<div class="box__piece" draggable="true" data-id="${piece.id}">${piece.symbol}</div>`)
+    .join('');
 
 const renderBox = (box) => `
     <div class="box">

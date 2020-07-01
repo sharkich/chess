@@ -1,8 +1,8 @@
 const boxEvents = (root) => {
   root.querySelectorAll('.box__piece').forEach((element) => {
+    const id = element.dataset.id;
     element.addEventListener('dragstart', (event) => {
-      event.dataTransfer.setData('piece_type', 'king');
-      console.log('dragstart');
+      event.dataTransfer.setData('id', id);
     });
   });
 };
