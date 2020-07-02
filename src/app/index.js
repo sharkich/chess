@@ -1,17 +1,21 @@
 import initEvents from './events';
+import renderBack from './render/back.js';
 import renderBoard from './render/board.js';
 import renderBox from './render/box.js';
-import STORE from './store';
+import Store from './store';
 
 const app = (root) => {
-  const render = (store) => {
+  const store = new Store();
+  const render = () => {
+    const data = store.getStore();
     root.innerHTML = `
-      ${renderBoard(store.board, store.selected)}
-      ${renderBox(store.box)}
+      ${renderBoard(data.board, data.selected)}
+      ${renderBox(data.box)}
+      ${renderBack()}
     `;
     initEvents(root, store, render);
   };
-  render(STORE);
+  render();
 };
 
 export default app;

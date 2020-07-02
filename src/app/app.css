@@ -95,3 +95,10 @@ html {
 .box__piece {
     margin: 4px 10px;
 }
+
+.back-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 4px 6px;
+}

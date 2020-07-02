@@ -13,27 +13,32 @@ const boardEvents = (root, store, render) => {
       event.preventDefault();
       const id = event.dataTransfer.getData('id');
       const piece = BOX_PIECES.find((_piece) => _piece.id === id);
-      store.board[+row][+col].piece = { ...piece };
-      render(store);
+      const data = store.getStore();
+      data.board[+row][+col].piece = { ...piece };
+      store.setStore(data);
+      render();
     });
 
     element.addEventListener('click', () => {
-      const piece = store.board[+row][+col].piece;
+      const data = store.getStore();
+      const piece = data.board[+row][+col].piece;
 
       // Move
       if (piece) {
         // Select
-        store.selected.piece = { ...piece };
-        store.selected.row = +row;
-        store.selected.col = +col;
-      } else if (isSelectedCell(+row, +col, store.board, store.selected)) {
+        data.selected.piece = { ...piece };
+        data.selected.row = +row;
+        data.selected.col = +col;
+        store.setStore(data);
+      } else if (isSelectedCell(+row, +col, data.board, data.selected)) {
         // move
-        store.board[+row][+col].piece = store.selected.piece;
-        store.board[store.selected.row][store.selected.col].piece = null;
-        store.selected.row = +row;
-        store.selected.col = +col;
+        data.board[+row][+col].piece = data.selected.piece;
+        data.board[data.selected.row][data.selected.col].piece = null;
+        data.selected.row = +row;
+        data.selected.col = +col;
+        store.setStore(data);
       }
-      render(store);
+      render();
     });
   });
 };
