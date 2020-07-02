@@ -1,4 +1,5 @@
 import { BOX_PIECES } from '../model/pieces.js';
+import isSelectedCell from '../services/is-selected-cell.js';
 
 const boardEvents = (root, store, render) => {
   root.querySelectorAll('.board__cell').forEach((element) => {
@@ -18,12 +19,20 @@ const boardEvents = (root, store, render) => {
 
     element.addEventListener('click', () => {
       const piece = store.board[+row][+col].piece;
-      if (!piece) {
-        return;
+
+      // Move
+      if (piece) {
+        // Select
+        store.selected.piece = { ...piece };
+        store.selected.row = +row;
+        store.selected.col = +col;
+      } else if (isSelectedCell(+row, +col, store.board, store.selected)) {
+        // move
+        store.board[+row][+col].piece = store.selected.piece;
+        store.board[store.selected.row][store.selected.col].piece = null;
+        store.selected.row = +row;
+        store.selected.col = +col;
       }
-      store.selected.piece = { ...piece };
-      store.selected.row = +row;
-      store.selected.col = +col;
       render(store);
     });
   });
