@@ -13,9 +13,7 @@ const boardEvents = (root, store, render) => {
       event.preventDefault();
       const id = event.dataTransfer.getData('id');
       const piece = BOX_PIECES.find((_piece) => _piece.id === id);
-      // console.log([row, col], id, piece);
-      store.board[+row][+col].piece = piece;
-      console.log(store);
+      store.board[+row][+col].piece = { ...piece };
       render(store);
     });
 
@@ -24,6 +22,9 @@ const boardEvents = (root, store, render) => {
       if (!piece) {
         return;
       }
+      store.selected.piece = { ...piece };
+      store.selected.row = +row;
+      store.selected.col = +col;
       store.board = pieceMove(+row, +col, store.board);
       render(store);
     });
